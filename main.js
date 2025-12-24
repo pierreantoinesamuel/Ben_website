@@ -1,7 +1,7 @@
 // Main JavaScript for Koneksyon Plus Ministry Website
 // Premium animations and interactions
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all components
     initNavigation();
     initTypedText();
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormHandling();
     initSmoothScrolling();
     loadShowsPreview();
-    
+
     console.log('Koneksyon Plus Ministry website initialized');
 });
 
@@ -19,7 +19,7 @@ function initNavigation() {
     const navbar = document.getElementById('navbar');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     // Sticky navigation with blur effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -28,17 +28,50 @@ function initNavigation() {
             navbar.classList.remove('nav-sticky');
         }
     });
-    
+
     // Mobile menu toggle
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        if (!isHidden) {
+            navbar.classList.add('nav-mobile-open');
+            navbar.classList.remove('bg-slate-900'); // Ensure we don't have conflicting bg classes if possible, though nav-mobile-open will override via CSS logic or !important
+        } else {
+            navbar.classList.remove('nav-mobile-open');
+            if (window.scrollY > 100) {
+                navbar.classList.add('nav-sticky'); // Re-apply sticky if needed, though scroll listener handles it. 
+                // Actually the scroll listener adds .nav-sticky which has a background.
+            }
+        }
     });
-    
+
     // Close mobile menu when clicking on a link
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            // Close menu first
             mobileMenu.classList.add('hidden');
+            navbar.classList.remove('nav-mobile-open');
+            if (window.scrollY <= 100) {
+                navbar.classList.remove('bg-slate-900');
+            }
+
+            // Handle smooth scrolling for anchor links manually to ensure it works
+            const href = link.getAttribute('href');
+            if (href.includes('#')) {
+                const targetId = href.split('#')[1];
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    // Small timeout to allow menu to close before scrolling
+                    setTimeout(() => {
+                        const offsetTop = targetElement.offsetTop - 120; // Increased offset for better visibility
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
         });
     });
 }
@@ -50,7 +83,7 @@ function initTypedText() {
         const typed = new Typed('#typed-text', {
             strings: [
                 'Empowering Leaders',
-                'Building Communities', 
+                'Building Communities',
                 'Growing Together',
                 'Faith & Business'
             ],
@@ -71,12 +104,14 @@ function initScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
+                // Stop observing once visible to keep it "on" (stable)
+                observer.unobserve(entry.target);
+
                 // Add staggered animation for cards
                 if (entry.target.classList.contains('card-hover')) {
                     const cards = document.querySelectorAll('.card-hover');
@@ -98,11 +133,11 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe all fade-in elements
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
-    
+
     // Parallax effect for hero background
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
@@ -117,13 +152,13 @@ function initScrollAnimations() {
 // Animated statistics counters
 function initStatsCounters() {
     const counters = document.querySelectorAll('.stats-counter');
-    
+
     const animateCounter = (counter) => {
         const target = parseInt(counter.getAttribute('data-target'));
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
-        
+
         const updateCounter = () => {
             current += increment;
             if (current < target) {
@@ -133,10 +168,10 @@ function initStatsCounters() {
                 counter.textContent = target + (target === 19 ? 'K+' : '+');
             }
         };
-        
+
         updateCounter();
     };
-    
+
     // Trigger counter animation when stats section is visible
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -149,7 +184,7 @@ function initStatsCounters() {
             }
         });
     });
-    
+
     const statsSection = document.querySelector('.floating');
     if (statsSection) {
         statsObserver.observe(statsSection);
@@ -159,15 +194,15 @@ function initStatsCounters() {
 // Form handling with validation
 function initFormHandling() {
     const forms = document.querySelectorAll('form');
-    
+
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
-            
+
             // Basic validation
             if (validateForm(data)) {
                 // Show success message
@@ -178,7 +213,7 @@ function initFormHandling() {
             }
         });
     });
-    
+
     // Add focus animations to form inputs
     const inputs = document.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -190,7 +225,7 @@ function initFormHandling() {
                 easing: 'easeOutQuart'
             });
         });
-        
+
         input.addEventListener('blur', () => {
             anime({
                 targets: input,
@@ -205,19 +240,19 @@ function initFormHandling() {
 // Form validation
 function validateForm(data) {
     const requiredFields = ['name', 'email'];
-    
+
     for (let field of requiredFields) {
         if (!data[field] || data[field].trim() === '') {
             return false;
         }
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
         return false;
     }
-    
+
     return true;
 }
 
@@ -226,13 +261,12 @@ function showNotification(message, type = 'info') {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(n => n.remove());
-    
+
     const notification = document.createElement('div');
-    notification.className = `notification fixed top-20 right-6 z-50 px-6 py-4 rounded-lg shadow-lg max-w-sm ${
-        type === 'success' ? 'bg-green-600' : 
+    notification.className = `notification fixed top-20 right-6 z-50 px-6 py-4 rounded-lg shadow-lg max-w-sm ${type === 'success' ? 'bg-green-600' :
         type === 'error' ? 'bg-red-600' : 'bg-blue-600'
-    } text-white`;
-    
+        } text-white`;
+
     notification.innerHTML = `
         <div class="flex items-center space-x-3">
             <div class="flex-shrink-0">
@@ -243,9 +277,9 @@ function showNotification(message, type = 'info') {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     anime({
         targets: notification,
@@ -254,7 +288,7 @@ function showNotification(message, type = 'info') {
         duration: 300,
         easing: 'easeOutQuart'
     });
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         anime({
@@ -271,17 +305,17 @@ function showNotification(message, type = 'info') {
 // Smooth scrolling for navigation links
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
+
             const targetId = link.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
-                
+                const offsetTop = targetElement.offsetTop - 120; // Account for fixed navbar
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -292,9 +326,9 @@ function initSmoothScrolling() {
 }
 
 // Button hover effects
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
-    
+
     buttons.forEach(button => {
         button.addEventListener('mouseenter', () => {
             anime({
@@ -304,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 easing: 'easeOutQuart'
             });
         });
-        
+
         button.addEventListener('mouseleave', () => {
             anime({
                 targets: button,
@@ -354,16 +388,16 @@ const optimizedScrollHandler = debounce(() => {
 async function loadShowsPreview() {
     const showsGrid = document.querySelector('[data-shows-grid]');
     if (!showsGrid) return;
-    
+
     try {
         // Fetch from YouTube RSS via rss2json
         const channelId = 'UCjY2VSXSITvz2wY6vRep7Zw'; // @Koneksyonplus
         const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
         const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-        
+
         const response = await fetch(apiUrl);
         const data = await response.json();
-        
+
         if (data.status === 'ok') {
             // Take the top 3 videos
             const episodes = data.items.slice(0, 3).map(item => ({
@@ -372,13 +406,13 @@ async function loadShowsPreview() {
                 description: item.description ? item.description.substring(0, 100) + '...' : '',
                 thumbnail: item.thumbnail
             }));
-            
+
             const gradients = [
                 'from-purple-600 to-blue-600',
                 'from-orange-500 to-orange-600',
                 'from-green-500 to-teal-600'
             ];
-            
+
             showsGrid.innerHTML = episodes.map((ep, index) => `
                 <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20 fade-in">
                     <div class="aspect-video bg-gradient-to-r ${gradients[index % 3]} flex items-center justify-center relative">
@@ -399,7 +433,7 @@ async function loadShowsPreview() {
                     </div>
                 </div>
             `).join('');
-            
+
             // Re-trigger animations for new elements
             const fadeElements = showsGrid.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
@@ -410,7 +444,7 @@ async function loadShowsPreview() {
                 });
             });
             fadeElements.forEach(el => observer.observe(el));
-            
+
         } else {
             throw new Error('RSS status not ok');
         }
@@ -421,4 +455,4 @@ async function loadShowsPreview() {
         // But we modified index.html to have content. Wait, I didn't empty the container in index.html, I just added the attribute.
         // So if this fails, the hardcoded content remains! Perfect fallback.
     }
-}window.addEventListener('scroll', optimizedScrollHandler);
+} window.addEventListener('scroll', optimizedScrollHandler);

@@ -136,6 +136,11 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
+        .nav-mobile-open {
+            background-color: #0B1120 !important;
+            backdrop-filter: none;
+        }
     </style>
 </head>
 
@@ -158,8 +163,7 @@
                     <a href="index.html" class="nav-link hover:text-amber-400 transition-colors">Home</a>
                     <a href="services.html" class="nav-link hover:text-amber-400 transition-colors">Services</a>
                     <a href="affiliate-shows.html" class="nav-link text-amber-400">Affiliate Shows</a>
-                    <a href="contact.html" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
-                    <a href="index.html#resources" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
+                    <a href="resources.html" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
                     <a href="index.html#conference" class="nav-link hover:text-amber-400 transition-colors">Conference
                         2025</a>
                 </div>
@@ -174,14 +178,18 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
                 <div class="flex flex-col space-y-4">
-                    <a href="index.html" class="nav-link hover:text-amber-400 transition-colors">Home</a>
-                    <a href="services.html" class="nav-link hover:text-amber-400 transition-colors">Services</a>
-                    <a href="affiliate-shows.html" class="nav-link text-amber-400">Affiliate Shows</a>
-                    <a href="contact.html" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
-                    <a href="index.html#resources" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
-                    <a href="index.html#conference" class="nav-link hover:text-amber-400 transition-colors">Conference
+                    <a href="index.html"
+                        class="nav-link text-lg font-medium hover:text-amber-400 transition-colors">Home</a>
+                    <a href="services.html"
+                        class="nav-link text-lg font-medium hover:text-amber-400 transition-colors">Services</a>
+                    <a href="affiliate-shows.html" class="nav-link text-lg font-medium text-amber-400">Affiliate
+                        Shows</a>
+                    <a href="resources.html"
+                        class="nav-link text-lg font-medium hover:text-amber-400 transition-colors">Resources</a>
+                    <a href="index.html#conference"
+                        class="nav-link text-lg font-medium hover:text-amber-400 transition-colors">Conference
                         2025</a>
                 </div>
             </div>
@@ -189,12 +197,12 @@
     </nav>
 
 
-    <!-- Featured Show -->
-    <section class="py-20">
+    <!-- Hero Section -->
+    <section class="py-20 pt-32 md:pt-32">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Featured Shows</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl lg:text-5xl font-bold mb-8 gradient-text">Featured Shows</h2>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
                     Watch our latest content featuring inspiring stories, practical advice, and faith-driven
                     entrepreneurship insights.
                 </p>
@@ -208,11 +216,11 @@
         </div>
     </section>
     <!-- Featured Shows Preview -->
-    <section class="py-20">
+    <section class="py-20 md:py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Affiliate Shows</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl lg:text-5xl font-bold mb-8 gradient-text">Affiliate Shows</h2>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
                     Watch our latest content featuring inspiring stories, practical advice, and faith-driven
                     entrepreneurship insights.
                 </p>
@@ -224,7 +232,7 @@
 
             <div class="text-center">
                 <a href="https://www.youtube.com/@Koneksyonplus/streams" target="_blank"
-                    class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block">
+                    class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block w-full md:w-auto">
                     View All Shows
                 </a>
             </div>
@@ -614,7 +622,16 @@
 
             // Mobile menu toggle
             mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                if (!isHidden) {
+                    navbar.classList.add('nav-mobile-open');
+                    navbar.classList.remove('bg-slate-900');
+                } else {
+                    navbar.classList.remove('nav-mobile-open');
+                    if (window.scrollY > 100) {
+                        navbar.classList.add('nav-sticky');
+                    }
+                }
             });
 
             // Close mobile menu when clicking on a link
@@ -622,6 +639,7 @@
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
+                    navbar.classList.remove('nav-mobile-open');
                 });
             });
 
