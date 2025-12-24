@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Koneksyon Plus Ministry - Empowering Leaders Through Faith &amp; Entrepreneurship</title>
+    <meta name="description"
+        content="Join a community of leaders where faith and entrepreneurship thrive. Koneksyon Plus Ministry empowers through education, health care, entrepreneurship, and technology." />
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet" />
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-purple: #7c3aed;
+            --accent-gold: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            overflow-x: hidden;
+        }
+
+        .hero-bg {
+            background: url('resources/hero-bg.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(124, 58, 237, 0.6) 50%, rgba(245, 158, 11, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #7c3aed, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #5b21b6, #4c1d95);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .nav-sticky {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #f59e0b;
+        }
+
+        @media (max-width: 768px) {
+            .stats-counter {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <script src="https://statics.moonshot.cn/sdk/preview-widgets.min.js" defer=""></script>
+</head>
+
+<body class="text-white">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gray-100 from-amber-400 to-purple-600 rounded-lg flex items-center justify-center">
+
+                        <!-- <span class="text-white font-bold text-lg">K+</span> -->
+                        <img src="resources/logokoneksyon-Edited-150x150.png" alt="Business Services"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <span class="text-xl font-bold">Koneksyon Plus</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link hover:text-amber-400 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link hover:text-amber-400 transition-colors">Services</a>
+                    <a href="affiliate-shows.html" class="nav-link hover:text-amber-400 transition-colors">Affiliate
+                        Shows</a>
+                    <a href="contact.html" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
+                    <a href="#resources" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
+                    <a href="#conference" class="nav-link hover:text-amber-400 transition-colors">Conference 2025</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link hover:text-amber-400 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link hover:text-amber-400 transition-colors">Services</a>
+                    <a href="affiliate-shows.html" class="nav-link hover:text-amber-400 transition-colors">Affiliate
+                        Shows</a>
+                    <a href="contact.html" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
+                    <a href="#resources" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
+                    <a href="#conference" class="nav-link hover:text-amber-400 transition-colors">Conference 2025</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center">
+        <div class="hero-content container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                            <span class="gradient-text" id="typed-text"></span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-gray-200 leading-relaxed">
+                            Join a Community of Leaders, Where Faith and Entrepreneurship Thrive
+                        </p>
+                    </div>
+
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">
+                        At Koneksyon Plus, we bring together entrepreneurs, professionals, and community leaders to
+                        build impactful relationships, tackle real-world challenges, and uplift one another through the
+                        love of Jesus.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg">
+                            Get Started Today
+                        </button>
+                        <button class="btn-secondary px-8 py-4 rounded-lg font-semibold text-lg">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="floating">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                        <div class="text-center space-y-6">
+                            <div>
+                                <div class="stats-counter" data-target="150">0</div>
+                                <p class="text-gray-300">Projects Completed</p>
+                            </div>
+                            <div>
+                                <div class="stats-counter" data-target="145">0</div>
+                                <p class="text-gray-300">Happy Clients</p>
+                            </div>
+                            <div>
+                                <div class="stats-counter" data-target="19">0</div>
+                                <p class="text-gray-300">K+ YouTube Subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="py-20 bg-gradient-to-r from-slate-900 to-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-4xl mx-auto fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Our Mission</h2>
+                <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                    Through meaningful media and Christ-centered collaboration, we create a space where purpose-driven
+                    leaders grow, connect, and make a difference in their communities and beyond.
+                </p>
+                <div class="grid md:grid-cols-4 gap-8 mt-12">
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Education</h3>
+                        <p class="text-gray-400">Empowering through knowledge</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Health Care</h3>
+                        <p class="text-gray-400">Caring for communities</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Entrepreneurship</h3>
+                        <p class="text-gray-400">Building businesses</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Technology</h3>
+                        <p class="text-gray-400">Innovating for impact</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Our Services</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We offer three core service areas designed to empower leaders and transform communities through
+                    faith-based principles.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6">
+                        <img src="resources/service-faith.jpg" alt="Faith-Based Services"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Faith-Based</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Spiritual guidance and ministry development services to strengthen your faith journey and
+                        community impact.
+                    </p>
+                    <div class="text-center">
+                        <!-- <button class="btn-secondary px-6 py-3 rounded-lg font-semibold">Learn More</button> -->
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6">
+                        <img src="resources/service-professional.jpg" alt="Professional Services"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Professional</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Career development, leadership training, and professional growth opportunities for aspiring
+                        leaders.
+                    </p>
+                    <div class="text-center">
+                        <!-- <button class="btn-secondary px-6 py-3 rounded-lg font-semibold">Learn More</button> -->
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6">
+                        <img src="resources/service-business.jpg" alt="Business Services"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Business &amp; Entrepreneur</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Business consulting, entrepreneurship support, and strategic planning for faith-driven
+                        enterprises.
+                    </p>
+                    <div class="text-center">
+                        <!-- <button class="btn-secondary px-6 py-3 rounded-lg font-semibold">Learn More</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Marketing Audit CTA -->
+    <section class="py-20 bg-gradient-to-r from-amber-500 to-purple-600">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-4xl mx-auto fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 text-white">Free Marketing Audit</h2>
+                <p class="text-xl text-white/90 mb-8">
+                    Claim your free digital marketing audit today — uncover hidden growth opportunities and see where
+                    your strategy can improve.
+                </p>
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-2xl mx-auto">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Your Name"
+                                class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400" />
+                            <input type="email" placeholder="Your Email"
+                                class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400" />
+                        </div>
+                        <input type="text" placeholder="Your Business/Ministry"
+                            class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400" />
+                        <button type="submit"
+                            class="w-full bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
+                            Request Free Audit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Shows Preview -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Featured Shows</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Watch our latest content featuring inspiring stories, practical advice, and faith-driven
+                    entrepreneurship insights.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" data-shows-grid>
+                <div
+                    class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20 fade-in">
+                    <div
+                        class="aspect-video bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Leadership Insights</h3>
+                        <p class="text-gray-300 mb-4">Weekly discussions on faith-driven leadership principles.</p>
+                        <button class="text-amber-400 hover:text-amber-300 font-semibold">Watch Episode →</button>
+                    </div>
+                </div>
+
+                <div
+                    class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20 fade-in">
+                    <div
+                        class="aspect-video bg-gradient-to-r from-amber-500 to-orange-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Entrepreneur Stories</h3>
+                        <p class="text-gray-300 mb-4">Real stories from faith-driven entrepreneurs.</p>
+                        <button class="text-amber-400 hover:text-amber-300 font-semibold">Watch Episode →</button>
+                    </div>
+                </div>
+
+                <div
+                    class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20 fade-in">
+                    <div
+                        class="aspect-video bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Community Impact</h3>
+                        <p class="text-gray-300 mb-4">How faith-based initiatives transform communities.</p>
+                        <button class="text-amber-400 hover:text-amber-300 font-semibold">Watch Episode →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="affiliate-shows.html"
+                    class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block">
+                    View All Shows
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-20 bg-slate-900 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Business Resources</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Essential tools and guides for starting, managing, and growing your business in Florida.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Getting Started -->
+                <div class="card-hover bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 fade-in">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div
+                            class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Getting Started</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="http://openmyfloridabusiness.gov/" target="_blank"
+                                class="text-lg font-semibold text-amber-400 hover:text-amber-300 transition-colors">Portal
+                                eGuide</a>
+                            <p class="text-sm text-gray-400 mt-1">Guide to starting a business in Florida.</p>
+                        </li>
+                        <li>
+                            <a href="https://dos.myflorida.com/library-archives/" target="_blank"
+                                class="font-medium text-white hover:text-amber-400 transition-colors">State Library of
+                                Florida</a>
+                        </li>
+                        <li>
+                            <a href="https://floridarevenue.com/" target="_blank"
+                                class="font-medium text-white hover:text-amber-400 transition-colors">Florida Dept. of
+                                Revenue</a>
+                        </li>
+                        <li>
+                            <a href="https://dos.myflorida.com/sunbiz/" target="_blank"
+                                class="font-medium text-white hover:text-amber-400 transition-colors">Sunbiz (Dept. of
+                                State)</a>
+                        </li>
+                        <li>
+                            <a href="https://www.irs.gov/" target="_blank"
+                                class="font-medium text-white hover:text-amber-400 transition-colors">Details on IRS
+                                (EIN)</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- State Resources -->
+                <div class="card-hover bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 fade-in">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div
+                            class="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center text-purple-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">State Resources</h3>
+                    </div>
+                    <div class="grid gap-3 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
+                        <a href="https://floridajobs.org/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Florida Commerce</div>
+                        </a>
+                        <a href="https://www.selectflorida.org/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Enterprise Florida (EFI)</div>
+                        </a>
+                        <a href="https://floridasbdc.org/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Small Business Dev. Center</div>
+                        </a>
+                        <a href="https://www.visitflorida.org/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Visit Florida</div>
+                        </a>
+                        <a href="https://www.flalottery.com/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Florida Lottery</div>
+                        </a>
+                        <a href="https://www.floir.com/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Office of Insurance Regulation</div>
+                        </a>
+                        <a href="https://www.dms.myflorida.com/business_operations/state_purchasing/myfloridamarketplace"
+                            target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">MyFloridaMarketPlace</div>
+                        </a>
+                        <a href="https://www.floridadisaster.org/" target="_blank"
+                            class="block p-3 rounded bg-white/5 hover:bg-white/10 transition-all border border-white/5 hover:border-amber-400/30">
+                            <div class="font-medium text-white">Disaster Preparedness</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Employment & Federal -->
+                <div class="space-y-8">
+                    <div class="card-hover bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 fade-in">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Employment</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li><a href="https://www.e-verify.gov/" target="_blank"
+                                    class="text-gray-300 hover:text-amber-400 transition-colors flex items-center"><span
+                                        class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2"></span>E-Verify
+                                    Eligibility</a></li>
+                            <li><a href="https://www.myfloridacfo.com/division/wc/" target="_blank"
+                                    class="text-gray-300 hover:text-amber-400 transition-colors flex items-center"><span
+                                        class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2"></span>Workers' Comp</a></li>
+                            <li><a href="http://www.rehabworks.org/" target="_blank"
+                                    class="text-gray-300 hover:text-amber-400 transition-colors flex items-center"><span
+                                        class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2"></span>Vocational Rehab</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 fade-in">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Federal & Other</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.usa.gov/" target="_blank"
+                                class="bg-white/10 text-sm text-gray-200 px-3 py-1 rounded-full hover:bg-amber-500 hover:text-white transition-colors">USA.gov</a>
+                            <a href="https://www.grants.gov/" target="_blank"
+                                class="bg-white/10 text-sm text-gray-200 px-3 py-1 rounded-full hover:bg-amber-500 hover:text-white transition-colors">Grants.gov</a>
+                            <a href="https://www.bbb.org/" target="_blank"
+                                class="bg-white/10 text-sm text-gray-200 px-3 py-1 rounded-full hover:bg-amber-500 hover:text-white transition-colors">BBB</a>
+                            <a href="https://www.uschamber.com/" target="_blank"
+                                class="bg-white/10 text-sm text-gray-200 px-3 py-1 rounded-full hover:bg-amber-500 hover:text-white transition-colors">US
+                                Chamber</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gradient-to-r from-slate-900 to-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">Get In Touch</h2>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Ready to start your journey with Koneksyon Plus Ministry? We&#39;re here to help you grow,
+                        connect, and make a difference.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-amber-400 to-purple-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p class="text-gray-300">koneksyonplusministry@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-amber-400 to-purple-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Phone</p>
+                                <p class="text-gray-300">(754) 315-3112</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Send us a Message</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Your Name"
+                                class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400" />
+                            <input type="email" placeholder="Your Email"
+                                class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400" />
+                        </div>
+                        <input type="text" placeholder="Subject"
+                            class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400" />
+                        <textarea rows="4" placeholder="Your Message"
+                            class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-amber-400 resize-none"></textarea>
+                        <button type="submit" class="w-full btn-primary px-8 py-4 rounded-lg font-bold text-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div
+                            class="w-10 h-10 bg-white from-amber-400 to-purple-600 rounded-lg flex items-center justify-center">
+                            <img src="resources/logokoneksyon-Edited-150x150.png" alt="Business Services"
+                                class="w-full h-full object-cover rounded-lg" />
+                        </div>
+                        <span class="text-xl font-bold">Koneksyon Plus</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Empowering leaders through faith and entrepreneurship.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="services.html" class="hover:text-amber-400 transition-colors">Services</a></li>
+                        <li><a href="affiliate-shows.html" class="hover:text-amber-400 transition-colors">Affiliate
+                                Shows</a></li>
+                        <li><a href="contact.html" class="hover:text-amber-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Free Marketing Audit</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Leadership Guides</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Business Tools</a></li>
+                        <li><a href="#conference" class="hover:text-amber-400 transition-colors">Conference 2025</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>koneksyonplusministry@gmail.com</li>
+                        <li>(754) 315-3112</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 Koneksyon Plus Ministry. All rights reserved. Developed with ❤️ for Kingdom impact.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

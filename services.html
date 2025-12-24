@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Koneksyon Plus Ministry</title>
+    <meta name="description" content="Explore our comprehensive services in faith-based consulting, professional development, and business entrepreneurship.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-purple: #7c3aed;
+            --accent-gold: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #7c3aed, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #5b21b6, #4c1d95);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+        
+        .nav-sticky {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.9);
+        }
+        
+        .service-hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(124, 58, 237, 0.7) 50%, rgba(245, 158, 11, 0.5) 100%);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-amber-400 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">K+</span>
+                    </div>
+                    <span class="text-xl font-bold">Koneksyon Plus</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link hover:text-amber-400 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link text-amber-400">Services</a>
+                    <a href="affiliate-shows.html" class="nav-link hover:text-amber-400 transition-colors">Affiliate Shows</a>
+                    <a href="contact.html" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
+                    <a href="index.html#resources" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
+                    <a href="index.html#conference" class="nav-link hover:text-amber-400 transition-colors">Conference 2025</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="nav-link hover:text-amber-400 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link text-amber-400">Services</a>
+                    <a href="affiliate-shows.html" class="nav-link hover:text-amber-400 transition-colors">Affiliate Shows</a>
+                    <a href="contact.html" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
+                    <a href="index.html#resources" class="nav-link hover:text-amber-400 transition-colors">Resources</a>
+                    <a href="index.html#conference" class="nav-link hover:text-amber-400 transition-colors">Conference 2025</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="service-hero min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-4xl mx-auto fade-in">
+                <h1 class="text-5xl lg:text-7xl font-bold mb-8 gradient-text">Our Services</h1>
+                <p class="text-xl lg:text-2xl text-gray-200 leading-relaxed mb-8">
+                    Comprehensive solutions for faith-driven leaders, entrepreneurs, and organizations
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                    We provide expert guidance and support across three core areas: faith-based consulting, professional development, and business entrepreneurship. Each service is designed to help you grow, connect, and make a lasting impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Faith-Based Services -->
+                <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="w-24 h-24 mx-auto mb-8">
+                        <img src="resources/service-faith.jpg" alt="Faith-Based Services" class="w-full h-full object-cover rounded-xl">
+                    </div>
+                    <h2 class="text-3xl font-bold mb-6 text-center gradient-text">Faith-Based Services</h2>
+                    <p class="text-gray-300 text-center mb-8 leading-relaxed">
+                        Spiritual guidance and ministry development services to strengthen your faith journey and community impact.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Ministry Strategic Planning</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Leadership Development</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Community Outreach Programs</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Pastoral Coaching & Mentoring</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Spiritual Growth Workshops</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn-secondary px-8 py-3 rounded-lg font-semibold w-full" onclick="openServiceModal('faith')">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Professional Services -->
+                <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="w-24 h-24 mx-auto mb-8">
+                        <img src="resources/service-professional.jpg" alt="Professional Services" class="w-full h-full object-cover rounded-xl">
+                    </div>
+                    <h2 class="text-3xl font-bold mb-6 text-center gradient-text">Professional Services</h2>
+                    <p class="text-gray-300 text-center mb-8 leading-relaxed">
+                        Career development, leadership training, and professional growth opportunities for aspiring leaders.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Career Coaching & Guidance</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Leadership Skills Training</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Professional Development</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Team Building Workshops</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Executive Coaching</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn-secondary px-8 py-3 rounded-lg font-semibold w-full" onclick="openServiceModal('professional')">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business & Entrepreneur Services -->
+                <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="w-24 h-24 mx-auto mb-8">
+                        <img src="resources/service-business.jpg" alt="Business Services" class="w-full h-full object-cover rounded-xl">
+                    </div>
+                    <h2 class="text-3xl font-bold mb-6 text-center gradient-text">Business & Entrepreneur</h2>
+                    <p class="text-gray-300 text-center mb-8 leading-relaxed">
+                        Business consulting, entrepreneurship support, and strategic planning for faith-driven enterprises.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Business Strategy Development</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Startup Mentorship</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Financial Planning & Management</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Marketing & Brand Development</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Faith-Based Business Networks</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn-secondary px-8 py-3 rounded-lg font-semibold w-full" onclick="openServiceModal('business')">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gradient-to-r from-slate-900 to-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">What Our Clients Say</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Hear from leaders and entrepreneurs who have transformed their ministries and businesses through our services.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">MJ</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Pastor Michael Johnson</h4>
+                            <p class="text-gray-400 text-sm">Grace Community Church</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Koneksyon Plus Ministry helped us develop a strategic plan that doubled our community outreach impact. Their faith-based approach to leadership development is transformational."
+                    </p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">SC</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Chen</h4>
+                            <p class="text-gray-400 text-sm">Tech Entrepreneur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "The business mentorship program gave me the tools and confidence to launch my faith-driven tech startup. The support has been incredible."
+                    </p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-amber-400 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">DW</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Dr. Williams</h4>
+                            <p class="text-gray-400 text-sm">Healthcare Executive</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Professional coaching through Koneksyon Plus helped me navigate complex leadership challenges while staying true to my values."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-amber-500 to-purple-600">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-4xl mx-auto fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 text-white">Ready to Get Started?</h2>
+                <p class="text-xl text-white/90 mb-8">
+                    Join hundreds of leaders who have transformed their ministries and businesses with our expert guidance.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block">
+                        Schedule Consultation
+                    </a>
+                    <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors" onclick="openServiceModal('general')">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-amber-400 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">K+</span>
+                        </div>
+                        <span class="text-xl font-bold">Koneksyon Plus</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Empowering leaders through faith and entrepreneurship.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="services.html" class="hover:text-amber-400 transition-colors">Services</a></li>
+                        <li><a href="affiliate-shows.html" class="hover:text-amber-400 transition-colors">Affiliate Shows</a></li>
+                        <li><a href="contact.html" class="hover:text-amber-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Free Marketing Audit</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Leadership Guides</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Business Tools</a></li>
+                        <li><a href="index.html#conference" class="hover:text-amber-400 transition-colors">Conference 2025</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>koneksyonplusministry@gmail.com</li>
+                        <li>(754) 315-3112</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Koneksyon Plus Ministry. All rights reserved. Developed with ❤️ for Kingdom impact.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Service modal functionality
+        function openServiceModal(serviceType) {
+            const serviceInfo = {
+                faith: {
+                    title: 'Faith-Based Services',
+                    description: 'Our faith-based services focus on strengthening your spiritual foundation while building effective ministry strategies. We provide comprehensive support for churches, ministries, and faith-based organizations.',
+                    features: [
+                        'Ministry Strategic Planning & Vision Casting',
+                        'Leadership Development & Team Building',
+                        'Community Outreach Program Design',
+                        'Pastoral Coaching & Spiritual Mentoring',
+                        'Faith-Based Conflict Resolution',
+                        'Spiritual Growth & Discipleship Programs',
+                        'Ministry Assessment & Optimization',
+                        'Prayer Ministry Development'
+                    ],
+                    pricing: 'Starting at $2,500/month',
+                    contact: 'Contact us for custom ministry packages'
+                },
+                professional: {
+                    title: 'Professional Development Services',
+                    description: 'Advance your career and leadership skills with our professional development programs designed for faith-driven individuals and organizations.',
+                    features: [
+                        'One-on-One Career Coaching',
+                        'Leadership Skills Assessment & Training',
+                        'Executive Presence & Communication',
+                        'Team Leadership & Management',
+                        'Professional Goal Setting & Achievement',
+                        'Workplace Ethics & Values Integration',
+                        'Career Transition Support',
+                        'Professional Network Building'
+                    ],
+                    pricing: 'Starting at $1,500/month',
+                    contact: 'Schedule your professional assessment today'
+                },
+                business: {
+                    title: 'Business & Entrepreneurship Services',
+                    description: 'Launch and grow your faith-driven business with our comprehensive entrepreneurship support and business consulting services.',
+                    features: [
+                        'Business Strategy & Planning',
+                        'Startup Mentorship & Guidance',
+                        'Financial Planning & Budget Management',
+                        'Marketing Strategy & Brand Development',
+                        'Faith-Based Business Networks',
+                        'Operational Excellence Consulting',
+                        'Market Research & Analysis',
+                        'Growth Strategy & Scaling'
+                    ],
+                    pricing: 'Starting at $3,000/month',
+                    contact: 'Get your free business consultation'
+                },
+                general: {
+                    title: 'Get Started with Koneksyon Plus',
+                    description: 'Ready to transform your ministry, career, or business? Let\'s discuss how our services can help you achieve your goals.',
+                    features: [
+                        'Free initial consultation',
+                        'Custom service packages',
+                        'Flexible payment options',
+                        'Ongoing support & mentorship',
+                        'Access to our network',
+                        'Regular progress reviews',
+                        'Resource library access',
+                        'Community membership'
+                    ],
+                    pricing: 'Free consultation, then custom pricing',
+                    contact: 'Schedule your free consultation today'
+                }
+            };
+
+            const service = serviceInfo[serviceType];
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50';
+            modal.innerHTML = `
+                <div class="bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 class="text-3xl font-bold gradient-text">${service.title}</h2>
+                            <button onclick="closeServiceModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                        </div>
+                        
+                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">${service.description}</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-amber-400">What's Included:</h3>
+                                <ul class="space-y-3">
+                                    ${service.features.map(feature => `
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-gray-300">${feature}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+                                <h3 class="text-xl font-bold mb-4 text-amber-400">Investment:</h3>
+                                <p class="text-2xl font-bold text-white mb-4">${service.pricing}</p>
+                                <p class="text-gray-300 mb-6">${service.contact}</p>
+                                
+                                <div class="space-y-4">
+                                    <a href="contact.html" class="btn-primary px-6 py-3 rounded-lg font-semibold w-full inline-block text-center">
+                                        Get Started
+                                    </a>
+                                    <button onclick="closeServiceModal()" class="bg-white/20 text-white px-6 py-3 rounded-lg font-semibold w-full hover:bg-white/30 transition-colors">
+                                        Learn More Later
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Animate in
+            anime({
+                targets: modal,
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+            
+            anime({
+                targets: modal.querySelector('.bg-slate-900'),
+                scale: [0.9, 1],
+                duration: 300,
+                easing: 'easeOutQuart'
+            });
+        }
+
+        function closeServiceModal() {
+            const modal = document.querySelector('.fixed.inset-0.z-50');
+            if (modal) {
+                anime({
+                    targets: modal,
+                    opacity: [1, 0],
+                    duration: 200,
+                    easing: 'easeInQuart',
+                    complete: () => modal.remove()
+                });
+            }
+        }
+
+        // Initialize navigation and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation functionality
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Sticky navigation
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('nav-sticky');
+                } else {
+                    navbar.classList.remove('nav-sticky');
+                }
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

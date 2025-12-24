@@ -1,0 +1,45 @@
+{
+  "playlist": {
+    "id": "PLKvKgq9vy00xtVT6uL7o0fjeQK6wwWEi7",
+    "channel": "https://www.youtube.com/@Koneksyonplus",
+    "playlistUrl": "https://www.youtube.com/watch?v=VPENswy9zWw&list=PLKvKgq9vy00xtVT6uL7o0fjeQK6wwWEi7",
+    "episodes": [
+      {
+        "id": "VPENswy9zWw",
+        "title": "Building Successful Partnerships",
+        "description": "Discover how to build and maintain successful partnerships in business and entrepreneurship. Learn key strategies for creating win-win relationships that last.",
+        "duration": "45:32",
+        "uploadDate": "Today",
+        "tags": ["Partnerships", "Business"],
+        "featured": true
+      },
+      {
+        "id": "dQw4w9WgXcQ",
+        "title": "Leadership Insights",
+        "description": "Weekly discussions on faith-driven leadership principles.",
+        "duration": "32:15",
+        "uploadDate": "3 days ago",
+        "tags": ["Leadership", "Faith"],
+        "featured": false
+      },
+      {
+        "id": "9bZkp7q19f0",
+        "title": "Entrepreneur Stories",
+        "description": "Real stories from faith-driven entrepreneurs.",
+        "duration": "28:45",
+        "uploadDate": "5 days ago",
+        "tags": ["Entrepreneurship", "Stories"],
+        "featured": false
+      },
+      {
+        "id": "jNQXAC9IVRw",
+        "title": "Community Impact",
+        "description": "How faith-based initiatives transform communities.",
+        "duration": "41:20",
+        "uploadDate": "1 week ago",
+        "tags": ["Community", "Impact"],
+        "featured": false
+      }
+    ]
+  }
+}
